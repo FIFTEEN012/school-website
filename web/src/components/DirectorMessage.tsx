@@ -1,31 +1,77 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Quote, User, Eye, Shield, Heart } from 'lucide-react';
-
-const visionPoints = [
-  {
-    icon: Eye,
-    title: 'วิสัยทัศน์ที่ชัดเจน',
-    desc: 'มุ่งสู่ความเป็นเลิศทางวิชาการ ควบคู่คุณธรรม',
-    color: 'from-blue-500 to-blue-600',
-  },
-  {
-    icon: Shield,
-    title: 'บริหารโปร่งใส',
-    desc: 'ยึดหลักธรรมาภิบาล ตรวจสอบได้ทุกขั้นตอน',
-    color: 'from-emerald-500 to-emerald-600',
-  },
-  {
-    icon: Heart,
-    title: 'ใส่ใจผู้เรียน',
-    desc: 'พัฒนาศักยภาพนักเรียนทุกคนอย่างเท่าเทียม',
-    color: 'from-rose-500 to-rose-600',
-  },
-];
+import { createClient } from '@/utils/supabase/client';
 
 export default function DirectorMessage() {
+  const [directorData, setDirectorData] = useState({
+    director_name: 'นางชนัฎฎา จำเริญสรรพ์',
+    director_message: 'โรงเรียนประชารัฐพัฒนศึกษามุ่งมั่นที่จะเป็นสถานศึกษาที่มีคุณภาพ บริหารงานด้วยความโปร่งใส ตรวจสอบได้ เน้นการพัฒนาผู้เรียนให้มีความรู้ คู่คุณธรรม มีทักษะที่จำเป็นในศตวรรษที่ 21 พร้อมก้าวสู่สังคมอย่างมีคุณภาพ เราเชื่อว่าการศึกษาที่ดีคือรากฐานของการพัฒนาที่ยั่งยืน',
+    director_image_url: '/images/director.jpg',
+    vision_title: 'วิสัยทัศน์ที่ชัดเจน',
+    vision_desc: 'มุ่งสู่ความเป็นเลิศทางวิชาการ ควบคู่คุณธรรม',
+    management_title: 'บริหารโปร่งใส',
+    management_desc: 'ยึดหลักธรรมาภิบาล ตรวจสอบได้ทุกขั้นตอน',
+    student_title: 'ใส่ใจผู้เรียน',
+    student_desc: 'พัฒนาศักยภาพนักเรียนทุกคนอย่างเท่าเทียม',
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const supabase = createClient();
+      try {
+        const { data, error } = await supabase
+          .from('school_profile')
+          .select('*')
+          .single();
+        
+        if (data) {
+          setDirectorData({
+             director_name: data.director_name || 'นางชนัฎฎา จำเริญสรรพ์',
+             director_message: data.director_message || 'โรงเรียนประชารัฐพัฒนศึกษามุ่งมั่นที่จะเป็นสถานศึกษาที่มีคุณภาพ...',
+             director_image_url: data.director_image_url || '/images/director.jpg',
+             vision_title: data.vision_title || 'วิสัยทัศน์ที่ชัดเจน',
+             vision_desc: data.vision_desc || 'มุ่งสู่ความเป็นเลิศทางวิชาการ ควบคู่คุณธรรม',
+             management_title: data.management_title || 'บริหารโปร่งใส',
+             management_desc: data.management_desc || 'ยึดหลักธรรมาภิบาล ตรวจสอบได้ทุกขั้นตอน',
+             student_title: data.student_title || 'ใส่ใจผู้เรียน',
+             student_desc: data.student_desc || 'พัฒนาศักยภาพนักเรียนทุกคนอย่างเท่าเทียม',
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching director data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const visionPoints = [
+    {
+      icon: Eye,
+      title: directorData.vision_title,
+      desc: directorData.vision_desc,
+      color: 'from-blue-500 to-blue-600',
+    },
+    {
+      icon: Shield,
+      title: directorData.management_title,
+      desc: directorData.management_desc,
+      color: 'from-emerald-500 to-emerald-600',
+    },
+    {
+      icon: Heart,
+      title: directorData.student_title,
+      desc: directorData.student_desc,
+      color: 'from-rose-500 to-rose-600',
+    },
+  ];
+
   return (
     <section className="relative py-24 bg-white overflow-hidden">
       {/* Subtle background decoration */}
@@ -73,7 +119,7 @@ export default function DirectorMessage() {
               {/* Photo card */}
                 <div className="relative w-64 sm:w-72 md:w-80 aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-gradient-to-br from-gray-100 to-gray-200">
                   <img
-                    src="/images/director.jpg"
+                    src={directorData.director_image_url}
                     alt="ผู้อำนวยการโรงเรียน"
                     className="w-full h-full object-cover"
                   />
@@ -82,7 +128,7 @@ export default function DirectorMessage() {
               {/* Name badge */}
               <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 glass-card px-5 py-3 text-center whitespace-nowrap">
                 <p className="font-kanit text-sm font-bold text-gray-900">
-                  นางชนัฎฎา  จำเริญสรรพ์
+                  {directorData.director_name}
                 </p>
                 <p className="font-sarabun text-xs text-primary-600">
                   ผู้อำนวยการโรงเรียน
@@ -108,10 +154,7 @@ export default function DirectorMessage() {
 
               <blockquote className="relative z-10 pt-8 sm:pt-6">
                 <p className="font-sarabun text-base sm:text-lg text-gray-700 leading-relaxed mb-6">
-                  "โรงเรียนประชารัฐพัฒนศึกษามุ่งมั่นที่จะเป็นสถานศึกษาที่มีคุณภาพ
-                  บริหารงานด้วยความโปร่งใส ตรวจสอบได้ เน้นการพัฒนาผู้เรียนให้มีความรู้
-                  คู่คุณธรรม มีทักษะที่จำเป็นในศตวรรษที่ 21 พร้อมก้าวสู่สังคมอย่างมีคุณภาพ
-                  เราเชื่อว่าการศึกษาที่ดีคือรากฐานของการพัฒนาที่ยั่งยืน"
+                  "{directorData.director_message}"
                 </p>
                 <footer className="flex items-center gap-3">
                   <div className="w-10 h-0.5 bg-gradient-to-r from-primary-500 to-primary-300 rounded-full" />
@@ -131,7 +174,7 @@ export default function DirectorMessage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {visionPoints.map((point, index) => (
                 <motion.div
-                  key={point.title}
+                  key={index}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

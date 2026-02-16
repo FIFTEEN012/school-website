@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Kanit, Sarabun } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ChatbotWidget from "@/components/ChatbotWidget";
 import "./globals.css";
 
 const kanit = Kanit({
@@ -37,6 +38,7 @@ export default function RootLayout({
         <main className="flex-grow">
           {children}
         </main>
+        <ChatbotWidget />
         <Footer />
       </body>
     </html>

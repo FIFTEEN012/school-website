@@ -24,7 +24,7 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, label: 'Facebook', href: 'https://facebook.com', color: 'hover:bg-blue-600' },
+  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100083289161308&locale=th_TH', color: 'hover:bg-blue-600' },
   { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@PRSSTUDIO-h3j', color: 'hover:bg-red-600' },
   { icon: Globe, label: 'Website', href: '#', color: 'hover:bg-green-600' },
 ];

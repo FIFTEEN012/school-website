@@ -16,6 +16,7 @@ import EJournal from '@/components/EJournal';
 import ContactInfo from '@/components/ContactInfo';
 import SocialMedia from '@/components/SocialMedia';
 import InternalSystems from '@/components/InternalSystems';
+import StudentShowcase from '@/components/StudentShowcase';
 
 export const revalidate = 0;
 
@@ -40,6 +41,8 @@ export default async function Home() {
       <HeroSection />
       <DirectorMessage />
       <VisionMissionPhilosophy />
+      
+      <StudentShowcase />
       
       {/* Organization Chart */}
       <OrganizationChart personnel={personnel || []} />

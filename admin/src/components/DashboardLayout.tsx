@@ -15,11 +15,22 @@ import {
   GraduationCap,
   Menu,
   ChevronRight,
+  Info,
+  MessageSquare,
+  Target,
+  Palette,
+  Award,
 } from 'lucide-react';
 import { useState, ReactNode } from 'react';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
+  { name: 'General Info', href: '/general-info', icon: Info },
+  { name: 'Identity', href: '/identity', icon: Palette },
+  { name: 'Director Message', href: '/director-message', icon: MessageSquare },
+  { name: 'Vision & Mission', href: '/vision-mission', icon: Target },
+
+  { name: 'Student Showcase', href: '/student-showcase', icon: Award },
   { name: 'Manage News', href: '/news', icon: Newspaper },
   { name: 'Manage Personnel', href: '/personnel', icon: Users },
   { name: 'Gallery', href: '/gallery', icon: ImageIcon },

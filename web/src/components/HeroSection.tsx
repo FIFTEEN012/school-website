@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -11,14 +11,64 @@ import {
   Sparkles,
   GraduationCap,
 } from 'lucide-react';
-
-const stats = [
-  { icon: Users, value: '120+', label: 'นักเรียน', color: 'from-blue-500 to-blue-600' },
-  { icon: BookOpen, value: '50+', label: 'หลักสูตร', color: 'from-emerald-500 to-emerald-600' },
-  { icon: Trophy, value: '98%', label: 'ผลสัมฤทธิ์', color: 'from-amber-500 to-amber-600' },
-];
+import { createClient } from '@/utils/supabase/client';
 
 export default function HeroSection() {
+  const [heroData, setHeroData] = useState({
+    school_name: 'โรงเรียนประชารัฐพัฒนศึกษา',
+    student_count: 120,
+    curriculum_count: 50,
+    success_rate: 98,
+    hero_image_url: '/images/school_building.jpg'
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchHeroData = async () => {
+      const supabase = createClient();
+      try {
+        const { data, error } = await supabase
+          .from('school_profile')
+          .select('*')
+          .single();
+        
+        if (data) {
+          setHeroData({
+             school_name: data.school_name || 'โรงเรียนประชารัฐพัฒนศึกษา',
+             student_count: data.student_count || 120,
+             curriculum_count: data.curriculum_count || 50,
+             success_rate: data.success_rate || 98,
+             hero_image_url: data.hero_image_url || '/images/school_building.jpg',
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching hero data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHeroData();
+  }, []);
+
+  const stats = [
+    { icon: Users, value: `${heroData.student_count}+`, label: 'นักเรียน', color: 'from-blue-500 to-blue-600' },
+    { icon: BookOpen, value: `${heroData.curriculum_count}+`, label: 'หลักสูตร', color: 'from-emerald-500 to-emerald-600' },
+    { icon: Trophy, value: `${heroData.success_rate}%`, label: 'ผลสัมฤทธิ์', color: 'from-amber-500 to-amber-600' },
+  ];
+
+  // Split school name for better formatting if it contains spaces or specific structure, 
+  // currently just rendering it directly or naively split if needed.
+  // For now, let's keep the design's "split" look by hacking it a bit or just displaying the full name.
+  // The original design had "โรงเรียน" on one line and "ประชารัฐ" highlighted. 
+  // We will try to preserve the "โรงเรียน" prefix logic if possible.
+  
+  const isDefaultName = heroData.school_name === 'โรงเรียนประชารัฐพัฒนศึกษา';
+  const nameParts = isDefaultName 
+    ? { prefix: 'โรงเรียน', highlight: 'ประชารัฐ', suffix: 'พัฒนศึกษา' }
+    : { prefix: 'โรงเรียน', highlight: heroData.school_name.replace('โรงเรียน', '').trim(), suffix: '' };
+
+
   return (
     <section
       id="home"
@@ -47,12 +97,13 @@ export default function HeroSection() {
 
             {/* Headline */}
             <h1 className="font-kanit text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-4">
-              โรงเรียน
-              <span className="bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent">
-                ประชารัฐ
+              {nameParts.prefix}
+              <br className="hidden sm:block" />
+              <span className="bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent px-2">
+                {nameParts.highlight}
               </span>
               <br />
-              พัฒนศึกษา
+              {nameParts.suffix}
             </h1>
 
             {/* Sub-headline */}
@@ -118,8 +169,8 @@ export default function HeroSection() {
               {/* Image placeholder */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/60 aspect-[4/5] bg-gray-100 group">
                 <img
-                  src="/images/school_building.jpg"
-                  alt="School Building"
+                  src={heroData.hero_image_url}
+                  alt={heroData.school_name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Subtle gradient overlay */}
@@ -138,7 +189,7 @@ export default function HeroSection() {
                 </div>
                 <div>
                   <p className="font-kanit text-sm font-bold text-gray-900">นักเรียนมากกว่า</p>
-                  <p className="font-sarabun text-xs text-gray-500">120 คน ในปีการศึกษานี้</p>
+                  <p className="font-sarabun text-xs text-gray-500">{heroData.student_count} คน ในปีการศึกษานี้</p>
                 </div>
               </motion.div>
 
