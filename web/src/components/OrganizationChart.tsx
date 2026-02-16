@@ -21,25 +21,27 @@ interface OrganizationChartProps {
 }
 
 // Static fallback data
+// Static fallback data
 const fallbackDirector = {
+  id: 'director-fallback',
   name: 'นาย/นาง ชื่อ นามสกุล',
   position: 'ผู้อำนวยการโรงเรียน',
   positionEn: 'School Director',
 };
 
 const fallbackBoardMembers = [
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'ประธานกรรมการสถานศึกษา', positionEn: 'Chairman' },
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'กรรมการผู้ทรงคุณวุฒิ', positionEn: 'Expert Member' },
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'ผู้แทนผู้ปกครอง', positionEn: 'Parent Rep.' },
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'ผู้แทนครู', positionEn: 'Teacher Rep.' },
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'ผู้แทนชุมชน', positionEn: 'Community Rep.' },
+  { id: 'board-1', name: 'นาย/นาง ชื่อ นามสกุล', position: 'ประธานกรรมการสถานศึกษา', positionEn: 'Chairman' },
+  { id: 'board-2', name: 'นาย/นาง ชื่อ นามสกุล', position: 'กรรมการผู้ทรงคุณวุฒิ', positionEn: 'Expert Member' },
+  { id: 'board-3', name: 'นาย/นาง ชื่อ นามสกุล', position: 'ผู้แทนผู้ปกครอง', positionEn: 'Parent Rep.' },
+  { id: 'board-4', name: 'นาย/นาง ชื่อ นามสกุล', position: 'ผู้แทนครู', positionEn: 'Teacher Rep.' },
+  { id: 'board-5', name: 'นาย/นาง ชื่อ นามสกุล', position: 'ผู้แทนชุมชน', positionEn: 'Community Rep.' },
 ];
 
 const fallbackExecutiveTeam = [
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'รองผู้อำนวยการฝ่ายวิชาการ', positionEn: 'Deputy Dir. Academic', color: 'from-blue-500 to-blue-600' },
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'รองผู้อำนวยการฝ่ายบริหาร', positionEn: 'Deputy Dir. Admin', color: 'from-emerald-500 to-emerald-600' },
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'รองผู้อำนวยการฝ่ายบุคคล', positionEn: 'Deputy Dir. Personnel', color: 'from-violet-500 to-violet-600' },
-  { name: 'นาย/นาง ชื่อ นามสกุล', position: 'รองผู้อำนวยการฝ่ายงบประมาณ', positionEn: 'Deputy Dir. Budget', color: 'from-amber-500 to-amber-600' },
+  { id: 'exec-1', name: 'นาย/นาง ชื่อ นามสกุล', position: 'รองผู้อำนวยการฝ่ายวิชาการ', positionEn: 'Deputy Dir. Academic', color: 'from-blue-500 to-blue-600' },
+  { id: 'exec-2', name: 'นาย/นาง ชื่อ นามสกุล', position: 'รองผู้อำนวยการฝ่ายบริหาร', positionEn: 'Deputy Dir. Admin', color: 'from-emerald-500 to-emerald-600' },
+  { id: 'exec-3', name: 'นาย/นาง ชื่อ นามสกุล', position: 'รองผู้อำนวยการฝ่ายบุคคล', positionEn: 'Deputy Dir. Personnel', color: 'from-violet-500 to-violet-600' },
+  { id: 'exec-4', name: 'นาย/นาง ชื่อ นามสกุล', position: 'รองผู้อำนวยการฝ่ายงบประมาณ', positionEn: 'Deputy Dir. Budget', color: 'from-amber-500 to-amber-600' },
 ];
 
 function PersonCard({ id, name, position, positionEn, isDirector, color, photoUrl }: any) {
@@ -152,17 +154,16 @@ export default function OrganizationChart({ personnel }: OrganizationChartProps)
               className="flex justify-center mb-4"
             >
               <div className="w-full max-w-xs">
-                <PersonCard
-                  name={director.name}
-                  position={director.position}
-                  // @ts-ignore
-                  positionEn={director.position_en || director.positionEn}
-                  isDirector
-                  // @ts-ignore
-                  photoUrl={director.photo_url}
-                  id={director.id}
-                  id={director.id}
-                />
+                  <PersonCard
+                    name={director.name}
+                    position={director.position}
+                    // @ts-ignore
+                    positionEn={director.position_en || director.positionEn}
+                    isDirector
+                    // @ts-ignore
+                    photoUrl={director.photo_url}
+                    id={director.id}
+                  />
               </div>
             </motion.div>
 
