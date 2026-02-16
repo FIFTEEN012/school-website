@@ -1,0 +1,14 @@
+System Status Update
+====================
+
+Admin Panel (Backend):
+- Restarted and Running
+- URL: http://localhost:3001
+- Log: Verified "Ready in 1681ms"
+
+Frontend (Website):
+- Running
+- URL: http://localhost:3000
+
+Please verify in your browser.
+If 3001 still fails, please check if another process is using the port or check the terminal output.
