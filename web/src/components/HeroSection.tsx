@@ -98,11 +98,9 @@ export default function HeroSection() {
             {/* Headline */}
             <h1 className="font-kanit text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-4">
               {nameParts.prefix}
-              <br className="hidden sm:block" />
               <span className="bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent px-2">
                 {nameParts.highlight}
               </span>
-              <br />
               {nameParts.suffix}
             </h1>
 
