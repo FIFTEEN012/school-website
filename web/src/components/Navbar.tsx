@@ -16,6 +16,7 @@ const navLinks = [
   { label: 'ITA', href: '/ita' },
   { label: 'การรับสมัคร', href: '/admissions' },
   { label: 'ข่าวสาร', href: '/news' },
+  { label: 'ความโปร่งใส', href: '/transparency' },
   { label: 'ติดต่อ', href: '/contact' },
 ];
 
