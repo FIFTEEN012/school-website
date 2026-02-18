@@ -115,40 +115,15 @@ export default function ContactInfo() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="lg:col-span-3"
           >
-            <div className="glass-card overflow-hidden border border-gray-100 h-full min-h-[400px] relative group">
-              {/* School Image */}
-              <div className="absolute inset-0 bg-gray-200">
-                <img
-                  src="/images/school_building.jpg"
-                  alt="School Building"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent opacity-80" />
-                
-                {/* Text Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <h4 className="font-kanit text-lg font-bold mb-1 drop-shadow-md">
-                    โรงเรียนประชารัฐพัฒนศึกษา
-                  </h4>
-                  <p className="font-sarabun text-sm text-white/90 drop-shadow-md flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-primary-400" />
-                    แผนที่การเดินทาง
-                  </p>
-                </div>
-              </div>
-              
-               {/* Map Link Button (Optional - mimics the placeholder functionality) */}
-              <a 
-                href="https://maps.google.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white hover:text-primary-600 transition-all duration-300 shadow-lg"
-                title="View on Google Maps"
-              >
-                <Navigation className="w-5 h-5" />
-              </a>
+            <div className="glass-card overflow-hidden border border-gray-100 h-full min-h-[400px] relative group p-1.5 bg-white shadow-xl">
+              <iframe
+                title="Google Map"
+                className="w-full h-full rounded-2xl"
+                src="https://maps.google.com/maps?q=16.754684940312863,103.69128888691415&z=15&output=embed"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </motion.div>
         </div>
