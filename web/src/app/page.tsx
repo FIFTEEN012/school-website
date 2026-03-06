@@ -8,7 +8,7 @@ import SchoolSymbols from '@/components/SchoolSymbols';
 import AcademicCalendar from '@/components/AcademicCalendar';
 import ContactInfo from '@/components/ContactInfo';
 import SocialMedia from '@/components/SocialMedia';
-import InternalSystems from '@/components/InternalSystems';
+
 import StudentShowcase from '@/components/StudentShowcase';
 
 export const revalidate = 0;
@@ -44,7 +44,7 @@ export default async function Home() {
       <LatestNews news={news || []} />
       <ContactInfo />
       <SocialMedia />
-      <InternalSystems />
+
     </>
   );
 }
