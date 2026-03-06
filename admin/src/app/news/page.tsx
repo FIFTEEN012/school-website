@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 import DashboardLayout from '@/components/DashboardLayout';
 import NewsManager from '@/components/NewsManager';
 
+export const revalidate = 0;
+
 export default async function NewsPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
