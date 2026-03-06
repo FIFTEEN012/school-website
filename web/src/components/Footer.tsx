@@ -138,7 +138,14 @@ export default function Footer() {
                     © {currentYear} โรงเรียนประชารัฐพัฒนศึกษา. All rights reserved.
                   </p>
                   <div className="mt-2 text-[10px] text-gray-600 flex justify-center gap-4">
-                    <a href="http://localhost:3001" target="_blank" rel="noopener noreferrer" className="hover:text-primary-400 transition-colors">Admin Login</a>
+                    <Link 
+                      href={process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3001"} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-primary-400 transition-colors"
+                    >
+                      Admin Login
+                    </Link>
                     <span>•</span>
                     <span>Developed by Tech Team</span>
                   </div>
