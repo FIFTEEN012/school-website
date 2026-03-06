@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Clock, Users, Award, GraduationCap, Target, CheckCircle } from 'lucide-react';
-import CurriculumCards from '@/components/CurriculumCards';
+
 import AcademicCalendar from '@/components/AcademicCalendar';
 
 const educationLevels = [
@@ -147,10 +147,7 @@ export default function AcademicPage() {
           </div>
         </div>
 
-        {/* Curriculum Cards (Synced with Homepage) */}
-        <div className="-mx-4 sm:-mx-6 lg:-mx-8">
-            <CurriculumCards />
-        </div>
+
 
         {/* Academic Calendar (Synced with Homepage) */}
         <div className="-mx-4 sm:-mx-6 lg:-mx-8">

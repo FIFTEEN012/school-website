@@ -3,15 +3,9 @@ import HeroSection from '@/components/HeroSection';
 import OrganizationChart from '@/components/OrganizationChart';
 import DirectorMessage from '@/components/DirectorMessage';
 import LatestNews from '@/components/LatestNews';
-import CurriculumCards from '@/components/CurriculumCards';
-
 import VisionMissionPhilosophy from '@/components/VisionMissionPhilosophy';
 import SchoolSymbols from '@/components/SchoolSymbols';
 import AcademicCalendar from '@/components/AcademicCalendar';
-import DigitalLibrary from '@/components/DigitalLibrary';
-import RegistrarGrades from '@/components/RegistrarGrades';
-
-import EJournal from '@/components/EJournal';
 import ContactInfo from '@/components/ContactInfo';
 import SocialMedia from '@/components/SocialMedia';
 import InternalSystems from '@/components/InternalSystems';
@@ -25,7 +19,6 @@ export default async function Home() {
     .from('news_announcements')
     .select('*')
     .eq('is_published', true)
-    .order('created_at', { ascending: false })
     .order('created_at', { ascending: false })
     .limit(3);
 
@@ -47,13 +40,8 @@ export default async function Home() {
       <OrganizationChart personnel={personnel || []} />
 
       <SchoolSymbols />
-      <CurriculumCards />
       <AcademicCalendar />
-      <DigitalLibrary />
-      <RegistrarGrades />
-
       <LatestNews news={news || []} />
-      <EJournal />
       <ContactInfo />
       <SocialMedia />
       <InternalSystems />
