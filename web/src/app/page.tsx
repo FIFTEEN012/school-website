@@ -4,14 +4,13 @@ import OrganizationChart from '@/components/OrganizationChart';
 import DirectorMessage from '@/components/DirectorMessage';
 import LatestNews from '@/components/LatestNews';
 import CurriculumCards from '@/components/CurriculumCards';
-import AdmissionSteps from '@/components/AdmissionSteps';
-import AdmissionRequirements from '@/components/AdmissionRequirements';
+
 import VisionMissionPhilosophy from '@/components/VisionMissionPhilosophy';
 import SchoolSymbols from '@/components/SchoolSymbols';
 import AcademicCalendar from '@/components/AcademicCalendar';
 import DigitalLibrary from '@/components/DigitalLibrary';
 import RegistrarGrades from '@/components/RegistrarGrades';
-import TuitionFees from '@/components/TuitionFees';
+
 import EJournal from '@/components/EJournal';
 import ContactInfo from '@/components/ContactInfo';
 import SocialMedia from '@/components/SocialMedia';
@@ -52,9 +51,7 @@ export default async function Home() {
       <AcademicCalendar />
       <DigitalLibrary />
       <RegistrarGrades />
-      <AdmissionSteps />
-      <AdmissionRequirements />
-      <TuitionFees />
+
       <LatestNews news={news || []} />
       <EJournal />
       <ContactInfo />

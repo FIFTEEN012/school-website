@@ -14,7 +14,7 @@ const navLinks = [
   { label: 'เกี่ยวกับเรา', href: '/about' },
   { label: 'วิชาการ', href: '/academic' },
   { label: 'ITA', href: '/ita' },
-  { label: 'การรับสมัคร', href: '/admissions' },
+
   { label: 'ข่าวสาร', href: '/news' },
   { label: 'ความโปร่งใส', href: '/transparency' },
   { label: 'ติดต่อ', href: '/contact' },

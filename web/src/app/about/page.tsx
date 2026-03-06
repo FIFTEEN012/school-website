@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import OrganizationChart from '@/components/OrganizationChart';
+import StudentStats from '@/components/StudentStats';
 
 export default async function AboutPage() {
   const supabase = await createClient();
@@ -10,8 +11,11 @@ export default async function AboutPage() {
     .order('rank', { ascending: true });
 
   return (
-    <>
-      <OrganizationChart personnel={personnel || []} />
-    </>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="container mx-auto px-4">
+        <OrganizationChart personnel={personnel || []} />
+        <StudentStats />
+      </div>
+    </div>
   );
 }

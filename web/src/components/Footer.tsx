@@ -18,7 +18,7 @@ import {
 const quickLinks = [
   { label: 'เกี่ยวกับเรา', href: '/about' },
   { label: 'หลักสูตร', href: '/academic' },
-  { label: 'การรับสมัคร', href: '/admissions' },
+
   { label: 'ข่าวสาร', href: '/news' },
   { label: 'ติดต่อเรา', href: '/contact' },
 ];

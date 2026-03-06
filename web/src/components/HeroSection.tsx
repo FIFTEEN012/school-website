@@ -115,10 +115,10 @@ export default function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-10">
               <Link
-                href="/admissions"
+                href="/about"
                 className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-primary-500 to-primary-700 rounded-2xl hover:from-primary-600 hover:to-primary-800 shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 transition-all duration-300 font-sarabun group"
               >
-                สมัครเรียน
+                เกี่ยวกับเรา
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link

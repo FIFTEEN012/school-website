@@ -142,7 +142,7 @@ export default function CurriculumCards() {
 
               {/* CTA */}
               <a
-                href="#admissions"
+                href="/academic"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 font-sarabun group/link"
               >
                 ดูรายละเอียด
