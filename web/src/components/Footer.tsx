@@ -139,7 +139,7 @@ export default function Footer() {
                   </p>
                   <div className="mt-2 text-[10px] text-gray-600 flex justify-center gap-4">
                     <Link 
-                      href={process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3001"} 
+                      href={process.env.NEXT_PUBLIC_ADMIN_URL || "https://fifteen012-school-admin.vercel.app/"} 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="hover:text-primary-400 transition-colors"
